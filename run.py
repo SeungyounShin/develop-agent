@@ -5,19 +5,17 @@ from agent.llm_utils import (
     gpt4v_completion,
 )
 
-from agent import SimpleCodeAgent, ReActAgent
+from agent import SimpleCodeAgent, ReActAgent, ReflectAgent
 
-AGENT_MAP = {"simple": SimpleCodeAgent, "react": ReActAgent}
+AGENT_MAP = {"simple": SimpleCodeAgent, "react": ReActAgent, "reflect": ReflectAgent}
 
 
 def run(args):
-
     agent = AGENT_MAP[args.agent_type](args)
 
     responses = agent.run(args.instruction)
 
-    for response in responses:
-        print(response)
+    print(f"!DONE: {responses}")
 
 
 if __name__ == "__main__":

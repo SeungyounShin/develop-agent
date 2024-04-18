@@ -42,13 +42,24 @@ class Message:
     def encode_image(image_path: str) -> str:
         """Encodes the image at the given path to base64. Compresses the image if it's larger than 20 MB."""
 
+        if not isinstance(image_path, str):
+            # PIL Image
+            img = image_path
+            img = img.convert("RGB")
+            buffer = io.BytesIO()
+            img.save(buffer, format="JPEG")
+            return base64.b64encode(buffer.getvalue()).decode("utf-8")
+
         initial_size = os.path.getsize(image_path)
 
         if initial_size > 20 * 1024 * 1024:
             # Open the image and compress
             with Image.open(image_path) as img:
                 buffer = io.BytesIO()
-                img.save(buffer, format="JPEG", quality=85, optimize=True)
+                # get size
+                width, height = img.size
+                # resize the image
+                img = img.resize((width // 2, height // 2))
 
                 if buffer.getbuffer().nbytes > 20 * 1024 * 1024:
                     raise ValueError(
@@ -92,6 +103,9 @@ class ImageTextConversation:
     ) -> List[Dict[str, Union[str, List[Dict[str, Union[str, Dict[str, str]]]]]]]:
         """Converts the conversation to a format suitable for OpenAI API."""
         return [message.to_dict() for message in self.messages]
+
+    def add_message(self, message: Message):
+        self.messages.append(message)
 
 
 if __name__ == "__main__":
