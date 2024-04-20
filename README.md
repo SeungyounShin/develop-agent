@@ -1,5 +1,10 @@
 # Web Development AI Agent Evaluation
 
+## Basic Usage
+```Bash
+python3 run.py --instruction 'Please develop a webpage that displays hello world.' --agent_type 'reflect' --model 'gpt-4-vision-preview'
+```
+
 ## Agent Architecture
 
 ![AgentArch](./assets/agent_flow_white_bg.png)
