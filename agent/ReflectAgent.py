@@ -40,7 +40,7 @@ class ReflectAgent(BaseAgent):
     ReAct + [WebSite SEE] Action
     """
 
-    def run(self, instruction: str, max_hop: int = 10, VERBOSE: bool = True) -> List:
+    def run(self, instruction: str, max_hop: int = 15, VERBOSE: bool = True) -> List:
         if VERBOSE:
             print(
                 termcolor.colored(
@@ -138,7 +138,8 @@ class ReflectAgent(BaseAgent):
             if action_type == "WRITE":
                 if action_type == "WRITE":
                     code_block_match = re.search(
-                        r"```(?:html|css|js|python)\n([\s\S]*?)\n```", response
+                        r"```(?:html|css|js|javascript|python)\n([\s\S]*?)\n```",
+                        response,
                     )
                     if code_block_match:
                         code_content = code_block_match.group(1)

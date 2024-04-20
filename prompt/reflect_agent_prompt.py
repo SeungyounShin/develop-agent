@@ -21,6 +21,7 @@ so for example, if you want to write the code to the app.py file you should writ
 
 Unfortunatelly, you can not use any other type of action.
 If you want to edit the file you should use WRITE(file_name) action.
+!! This also mean that you cannot breviate the code block.
 
 # See(Hosted URL)
 After you launched the server, you can see the result by '# See' keyword.
@@ -44,6 +45,7 @@ if you say terminal you should not generate any text or code block. It will be c
 
 !Tips
 - Port 5000, 8000 is in use by another program.
+- When you take Write Action you cannot breviate the code block. this will cause an error when you run the server.
 
 Make sure you follow these steps to complete the task:
 1. Develop a webserver using Flask and HTML, CSS, and JavaScript (If needed).
