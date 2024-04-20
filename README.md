@@ -1,9 +1,31 @@
-# Web Development AI Agent Evaluation
+# Web Development AI Agent
+
+<p align="center">
+<a href="https://www.python.org/downloads/"><img alt="Python 11" src="https://img.shields.io/badge/python-11.0-blue.svg"></a>
+<a href="https://github.com/your-repository/blob/master/LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg"></a>
+<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+</p>
+
 
 ## Basic Usage
-```Bash
-python3 run.py --instruction 'Please develop a webpage that displays hello world.' --agent_type 'reflect' --model 'gpt-4-vision-preview'
-```
+
+1. Set up your OpenAI API key:
+
+   ```bash
+   export OPENAI_API_KEY=<YOUR API KEY>
+   ```
+
+2. Run the agent:
+
+   ```bash
+   python3 run.py --instruction 'Please develop a webpage that displays hello world.' --agent_type 'reflect' --model 'gpt-4-vision-preview'
+   ```
+
+   - `--instruction`: Specify the task or instruction for the agent.
+   - `--agent_type`: Choose the type of agent. In this example, 'reflect' is used. (`ReAct` + `Vision Feedback`)
+   - `--model`: Select the OpenAI model to be used. Here, `gpt-4-vision-preview` is specified.
+
+Make sure to replace `<YOUR API KEY>` with your actual OpenAI API key.
 
 ## Agent Architecture
 
